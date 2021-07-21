@@ -88,7 +88,7 @@
                     Background="Transparent" Padding="0">
             <Image x:Name="openArrow" Source="/EZCounter;component/Resources/upArrow.png"/>
         </Button>
-        <Border Width="215" x:Name="GridHeight" Height="450" Grid.Row="2" Grid.ColumnSpan="3">
+        <Border Width="215" x:Name="GridHeight" Height="525" Grid.Row="2" Grid.ColumnSpan="3">
             <Grid Width="215" Grid.Row="1" Grid.ColumnSpan="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".gitignore" />
     <None Remove="Resources\add.png" />
     <None Remove="Resources\downArrow.png" />
     <None Remove="Resources\subtract.png" />
