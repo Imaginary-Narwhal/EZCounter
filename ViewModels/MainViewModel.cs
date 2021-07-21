@@ -37,6 +37,7 @@ namespace EZCounter.ViewModels
                 Current = value;
             }
         }
+        public bool IsExiting { get; set; }
 
         private ICommand increment;
         private ICommand decrement;
@@ -116,6 +117,12 @@ namespace EZCounter.ViewModels
             Records = db.Counters.ToObservableCollection();
             SelectedItem = newCounter;
             Current = newCounter;
+            if (Properties.Settings.Default.timerActive)
+            {
+                TimerCounter = 0;
+                currentTime = 0;
+                cTimer.Start();
+            }
         }
 
         public static bool CanExecute => true;

@@ -12,6 +12,7 @@
     <None Remove=".gitignore" />
     <None Remove="Resources\add.png" />
     <None Remove="Resources\downArrow.png" />
+    <None Remove="Resources\menu.png" />
     <None Remove="Resources\subtract.png" />
     <None Remove="Resources\upArrow.png" />
   </ItemGroup>
@@ -35,6 +36,7 @@
   <ItemGroup>
     <Resource Include="Resources\add.png" />
     <Resource Include="Resources\downArrow.png" />
+    <Resource Include="Resources\menu.png" />
     <Resource Include="Resources\subtract.png" />
     <Resource Include="Resources\upArrow.png" />
   </ItemGroup>

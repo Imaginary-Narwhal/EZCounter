@@ -1,0 +1,80 @@
+﻿<Window x:Class="EZCounter.Views.SettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:EZCounter.Properties"
+        xmlns:local="clr-namespace:EZCounter.Views"
+        xmlns:custom="clr-namespace:EZCounter"
+        mc:Ignorable="d" Background="#121212"
+        Title="Settings" Height="140" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="bool2Vis"/>
+        <custom:BoolInverterConverter x:Key="boolInvert"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="2" Foreground="#B6B5B5" FontSize="12pt">Timer settings:</Label>
+        <CheckBox FlowDirection="RightToLeft" Background="#B6B5B5"
+                          FontSize="12pt" VerticalContentAlignment="Center"
+                          VerticalAlignment="Center" 
+                          Content="?On" 
+                          Grid.Row="1" Grid.Column="0"
+                          Margin="0,0,10,0"
+                          Foreground="#B6B5B5"
+                          x:Name="TimerCheck"
+                          IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=timerActive}">
+            <CheckBox.Resources>
+                <Style TargetType="{x:Type Path}">
+                    <Setter Property="FlowDirection" Value="LeftToRight"/>
+                </Style>
+            </CheckBox.Resources>
+        </CheckBox>
+        <StackPanel Grid.Column="1" 
+                            Grid.Row="1" 
+                            Orientation="Horizontal" 
+                            Margin="10,5,0,5"
+                            Visibility="{Binding IsChecked, ElementName=TimerCheck, Converter={StaticResource bool2Vis}}">
+            <Label Content="M:" Foreground="White"/>
+            <TextBox Width="20" 
+                             Text="{Binding Source={x:Static properties:Settings.Default}, Path=timerMinutes}" 
+                             VerticalContentAlignment="Center" 
+                             Background="#12ffffff"
+                             Foreground="White"/>
+            <Label Content="S:" Foreground="White"/>
+            <TextBox Width="20" 
+                             Text="{Binding Source={x:Static properties:Settings.Default}, Path=timerSeconds}" 
+                             VerticalContentAlignment="Center"
+                             Background="#12ffffff"
+                             Foreground="White"/>
+        </StackPanel>
+
+        <Label Grid.Row="2" Foreground="#B6B5B5" FontSize="12pt">List Anchor:</Label>
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <RadioButton 
+                IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=anchorListTop}"
+                Background="#b6b5b5"
+                Content="Top" 
+                Foreground="#b6b5b5" 
+                FontSize="12pt" 
+                VerticalContentAlignment="Center" Click="MoveWindow"
+                Padding="0,0,15,0"/>
+            <RadioButton 
+                IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=anchorListTop, Converter={StaticResource boolInvert}}"
+                Background="#b6b5b5"
+                Content="Bottom" 
+                Foreground="#b6b5b5" 
+                FontSize="12pt" Click="MoveWindow"
+                VerticalContentAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>

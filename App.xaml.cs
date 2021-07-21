@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,7 +20,11 @@ namespace EZCounter
 
         public App()
         {
-            WindowPlace = new WindowPlace("placement.config");
+            string placementFile = Path.Combine(
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EZCounter"),
+                "placement.config");
+
+            WindowPlace = new WindowPlace(placementFile);
         }
 
         protected override void OnExit(ExitEventArgs e)
