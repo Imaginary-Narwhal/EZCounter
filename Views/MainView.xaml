@@ -10,7 +10,7 @@
         Topmost="True" Background="#121212"
         Height="65" Width="240" Name="TehWindow"
         ResizeMode="NoResize" WindowStyle="None" MouseDown="Window_MouseDown"
-        Loaded="Window_Loaded" LocationChanged="Moving" Closing="OnClose">
+        Loaded="Window_Loaded" LocationChanged="Moving" Closing="OnClose" >
     <Window.Resources>
         <Style x:Key="{x:Type ContextMenu}" TargetType="{x:Type ContextMenu}">
             <Setter Property="OverridesDefaultStyle" Value="True"/>

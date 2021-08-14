@@ -14,6 +14,8 @@ namespace EZCounter.ViewModels
 {
     public class MainViewModel : ICustomPropertyNotify
     {
+        public TimerSounds Sounds { get; set; }
+
         public readonly dbContext db;
         private Timer cTimer;
         private decimal currentTime = 0;
@@ -53,6 +55,7 @@ namespace EZCounter.ViewModels
             cTimer.Elapsed += new ElapsedEventHandler(OnTimerEVent);
             cTimer.Interval = 1000;
             TimerCounter = 0;
+            Sounds = new TimerSounds();
         }
 
         private void OnTimerEVent(object sender, ElapsedEventArgs e)
@@ -64,7 +67,10 @@ namespace EZCounter.ViewModels
 
             if (currentTime == maxTime)
             {
+                var sounds = new TimerSounds();
                 TimerCounter = 100;
+                cTimer.Stop();
+                sounds.PlaySound();
             }
             else
             {

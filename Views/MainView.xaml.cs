@@ -20,9 +20,9 @@ namespace EZCounter.Views
     /// </summary>
     public partial class MainView : Window
     {
-        private MainViewModel vm;
+        public MainViewModel vm { get; set; }
         private ListView lWindow;
-
+        public TimerSounds tSounds { get; set; }
 
         public MainView()
         {
@@ -35,7 +35,7 @@ namespace EZCounter.Views
             DataContext = vm;
 
             lWindow = new ListView(vm);
-            lWindow.Show();
+            lWindow.Show();            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -99,7 +99,7 @@ namespace EZCounter.Views
 
         private void Moving(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.listOpen && lWindow != null)
+            if (lWindow != null)
             {
                 lWindow.Top = GetTop();
                 lWindow.Left = TehWindow.Left;

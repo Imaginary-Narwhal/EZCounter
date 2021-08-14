@@ -20,9 +20,14 @@ namespace EZCounter
 
         public App()
         {
-            string placementFile = Path.Combine(
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EZCounter"),
-                "placement.config");
+            string Storage = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EZCounter");
+
+            string placementFile = Path.Combine(Storage, "placement.config");
+
+            if(!Directory.Exists(Path.Combine(Storage, "Sounds")))
+            {
+                Directory.CreateDirectory(Path.Combine(Storage, "Sounds"));
+            }
 
             WindowPlace = new WindowPlace(placementFile);
         }
