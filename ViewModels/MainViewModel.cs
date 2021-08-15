@@ -24,7 +24,6 @@ namespace EZCounter.ViewModels
         private ObservableCollection<Counter> records;
         private Counter selectedItem;
         private decimal timerCounter;
-        
 
         public decimal TimerCounter { get=> timerCounter; set => SetProperty(ref timerCounter, value); }
         public Counter Current { get => current; set => SetProperty(ref current, value); }

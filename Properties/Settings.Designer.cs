@@ -94,5 +94,17 @@ namespace EZCounter.Properties {
                 this["timerSound"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double transparency {
+            get {
+                return ((double)(this["transparency"]));
+            }
+            set {
+                this["transparency"] = value;
+            }
+        }
     }
 }

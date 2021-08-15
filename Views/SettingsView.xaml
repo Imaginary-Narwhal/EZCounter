@@ -21,10 +21,6 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -49,13 +45,23 @@
                 VerticalContentAlignment="Center"/>
         </StackPanel>
 
+        <Label Grid.Row="1" Foreground="#b6b5b5" FontSize="12pt">Transparency:</Label>
+        <Slider 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            VerticalAlignment="Center" 
+            Margin="10,0,10,0" 
+            Minimum=".1"
+            Maximum="1"
+            Value="{Binding Source={x:Static properties:Settings.Default}, Path=transparency}"
+            ValueChanged="SliderChange"/>
 
-        <Label Grid.Row="1" Grid.ColumnSpan="2" Foreground="#B6B5B5" FontSize="12pt">Timer settings:</Label>
+        <Label Grid.Row="2" Grid.ColumnSpan="2" Foreground="#B6B5B5" FontSize="12pt">Timer settings:</Label>
         <CheckBox FlowDirection="RightToLeft" Background="#B6B5B5"
                           FontSize="12pt" VerticalContentAlignment="Center"
                           VerticalAlignment="Center" 
                           Content="?On" 
-                          Grid.Row="2" Grid.Column="0"
+                          Grid.Row="3" Grid.Column="0"
                           Margin="0,0,10,0"
                           Foreground="#B6B5B5"
                           x:Name="TimerCheck"
@@ -67,7 +73,7 @@
             </CheckBox.Resources>
         </CheckBox>
         <StackPanel Grid.Column="1" 
-                            Grid.Row="2" 
+                            Grid.Row="3" 
                             Orientation="Horizontal" 
                             Margin="10,5,0,5"
                             Visibility="{Binding IsChecked, ElementName=TimerCheck, Converter={StaticResource bool2Vis}}">
@@ -87,23 +93,24 @@
 
         <Label
             Foreground="#B6B5B5" FontSize="12pt"
-            Grid.Row="3"
+            Grid.Row="4"
             Content="Timer Sound:" HorizontalContentAlignment="Right"
             Visibility="{Binding IsChecked, ElementName=TimerCheck, Converter={StaticResource bool2Vis}}"
             />
         <ComboBox 
             SelectionChanged="ChangedSound" 
             SelectedItem="{Binding SelectedSound}" 
-            Grid.Row="3" 
+            Grid.Row="4" 
             Grid.Column="1" 
             FontSize="12pt"
             Margin="10,3,10,3"
             ItemsSource="{Binding AllSounds}"
             Visibility="{Binding IsChecked, ElementName=TimerCheck, Converter={StaticResource bool2Vis}}"/>
         <Button
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.Column="1"
             Margin="10,3,10,3" Width="200" FontSize="12pt"
-            Background="SlateGray" Foreground="#B6B5B5" Click="OpenSounds">Open Sound Folder</Button>
+            Background="SlateGray" Foreground="#B6B5B5" Click="OpenSounds"
+            Visibility="{Binding IsChecked, ElementName=TimerCheck, Converter={StaticResource bool2Vis}}">Open Sound Folder</Button>
     </Grid>
 </Window>

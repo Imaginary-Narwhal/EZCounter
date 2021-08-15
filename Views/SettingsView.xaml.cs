@@ -49,5 +49,10 @@ namespace EZCounter.Views
         {
             Process.Start("explorer.exe", Storage.Sounds);
         }
+
+        private void SliderChange(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Properties.Settings.Default.Save(); 
+        }
     }
 }

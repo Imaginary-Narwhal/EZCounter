@@ -27,7 +27,6 @@ namespace EZCounter.Views
         public MainView()
         {
             vm = new MainViewModel();
-            Properties.Settings.Default.listOpen = true;
 
             InitializeComponent();
 
@@ -41,6 +40,33 @@ namespace EZCounter.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MoveListView();
+            if (Properties.Settings.Default.anchorListTop)
+            {
+                if (!Properties.Settings.Default.listOpen)
+                {
+                    lWindow.Visibility = Visibility.Collapsed;
+                    toggleListImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/upArrow.png"));
+                }
+                else
+                {
+
+                    lWindow.Visibility = Visibility.Visible;
+                    toggleListImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/downArrow.png"));
+                }
+            }
+            else
+            {
+                if (!Properties.Settings.Default.listOpen)
+                {
+                    lWindow.Visibility = Visibility.Collapsed;
+                    toggleListImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/downArrow.png"));
+                }
+                else
+                {
+                    lWindow.Visibility = Visibility.Visible;
+                    toggleListImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/upArrow.png"));
+                }
+            }
         }
 
         public void MoveListView()
@@ -161,7 +187,8 @@ namespace EZCounter.Views
                     lWindow.Visibility = Visibility.Visible;
                     toggleListImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/upArrow.png"));
                 }
-            }        
+            }
+            Properties.Settings.Default.Save();
         }
     }
 }
